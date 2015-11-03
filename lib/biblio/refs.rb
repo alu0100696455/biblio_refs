@@ -15,6 +15,21 @@ module Biblio
     		@fecha_publicacion = fecha_publicacion
     		@isbn = isbn
     	end
+
+    	def autores_to_s
+    		final = ""
+    		if autores.kind_of?(Array)
+	    		autores.each do |autor|
+	    			final += autor
+	    			final += ", "
+	    		end
+	    		final[-2] = "."
+	    	else
+	    		final += autores
+	    		final += ". "
+    		end
+    		final.chop
+    	end
     end
   end
 end
