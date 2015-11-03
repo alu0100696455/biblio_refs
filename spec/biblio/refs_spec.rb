@@ -47,8 +47,8 @@ describe Biblio::Refs do
   end
 
   it 'Debe existir un método que devuelva los autores' do
-    expect(@ref1.autores_to_s).should eq("Dave Thomas, Andy Hunt, Chad Fowler.")
-    expect(@ref2.autores_to_s).should eq("J.R.R Tolkien")
+    expect(@ref1.autores_to_s).to eq("Dave Thomas, Andy Hunt, Chad Fowler.")
+    expect(@ref2.autores_to_s).to eq("J.R.R Tolkien.")
   end
 
   it 'Debe existir un método que devuelva el título' do
