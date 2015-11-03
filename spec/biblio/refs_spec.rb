@@ -50,4 +50,9 @@ describe Biblio::Refs do
     expect(@ref1.autores_to_s).to eq("Dave Thomas, Andy Hunt, Chad Fowler.")
     expect(@ref2.autores_to_s).to eq("J.R.R Tolkien.")
   end
+
+  it 'Debe existir un método que devuelva el título' do
+    expect(@ref1.titulo_to_s).should eq("Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide")
+    expect(@ref2.titulo_to_s).should eq("El Hobbit")
+  end
 end
