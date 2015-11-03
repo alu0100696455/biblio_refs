@@ -22,6 +22,6 @@ describe Biblio::Refs do
 
   it 'Debe o no existir una serie' do
     expect(@ref1.serie).not_to be nil
-    expect(@ref2.serie).to_be nil
+    expect(@ref2.serie).to be nil
   end
 end
