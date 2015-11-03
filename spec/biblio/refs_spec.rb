@@ -45,4 +45,9 @@ describe Biblio::Refs do
     expect(@ref1.isbn).not_to be nil
     expect(@ref2.isbn).not_to be nil
   end
+
+  it 'Debe existir un método que devuelva los autores' do
+    expect(@ref1.autores_to_s).should eq("Dave Thomas, Andy Hunt, Chad Fowler.")
+    expect(@ref2.autores_to_s).should eq("J.R.R Tolkien")
+  end
 end
