@@ -2,6 +2,12 @@ require "biblio/refs/version"
 
 module Biblio
   module Refs
-    # Your code goes here...
+    class Referencia
+    	attr_accessor :autores
+
+    	def initialize(autores)
+    		@autores = autores
+    	end
+    end
   end
 end
