@@ -5,8 +5,8 @@ describe Biblio::Refs do
 
   before :each do
 
-    @ref1 = Biblio::Refs::Referencia.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, Date.parse('7th July 2013'))
-    @ref2 = Biblio::Refs::Referencia.new("J.R.R Tolkien", "El Hobbit", "Minotauro", 2, Date.parse('1st February 1982'))
+    @ref1 = Biblio::Refs::Referencia.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, Date.parse('7th July 2013'), ['978-1937785499', 1937785491])
+    @ref2 = Biblio::Refs::Referencia.new("J.R.R Tolkien", "El Hobbit", "Minotauro", 2, Date.parse('1st February 1982'), 0345538374)
   end
 
   it 'Tiene un número de versión' do
@@ -39,5 +39,10 @@ describe Biblio::Refs do
   it 'Debe existir una fecha de publicación' do
     expect(@ref1.fecha_publicacion).not_to be nil
     expect(@ref2.fecha_publicacion).not_to be nil
+  end
+
+  it 'Debe existir uno o más números ISBN' do
+    expect(@ref1.isbn).not_to be nil
+    expect(@ref2.isbn).not_to be nil
   end
 end
