@@ -70,4 +70,9 @@ describe Biblio::Refs do
     expect(@ref1.num_edicion_to_s).to eq("4 edition")
     expect(@ref2.num_edicion_to_s).to eq("2 edition")
   end
+
+  it 'Debe existir un método que devuelva la fecha de publicación' do
+    expect(@ref1.fecha_publicacion_to_s).to eq("July 7, 2013")
+    expect(@ref2.fecha_publicacion_to_s).to eq("February 1, 1982")
+  end
 end
