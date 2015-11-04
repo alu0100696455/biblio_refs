@@ -44,6 +44,10 @@ module Biblio
     	def editorial_to_s
     		editorial.to_s
     	end
+
+    	def num_edicion_to_s
+    		num_edicion.to_s + " edition"
+    	end
     end
   end
 end
