@@ -40,6 +40,10 @@ module Biblio
     			"(" + serie.to_s + ")"
     		end
     	end
+
+    	def editorial_to_s
+    		editorial.to_s
+    	end
     end
   end
 end
