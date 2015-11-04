@@ -60,4 +60,9 @@ describe Biblio::Refs do
     expect(@ref1.serie_to_s).to eq("(The Facets of Ruby)")
     expect(@ref2.serie_to_s).to be nil
   end
+
+  it 'Debe existir un método que devuelva la editorial' do
+    expect(@ref1.editorial_to_s).to eq("Pragmatic Bookshelf")
+    expect(@ref2.editorial_to_s).to eq("Minotauro")
+  end
 end
