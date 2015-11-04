@@ -34,6 +34,12 @@ module Biblio
     	def titulo_to_s
     		titulo.to_s
     	end
+
+    	def serie_to_s
+    		if serie != nil
+    			"(" + serie.to_s + ")"
+    		end
+    	end
     end
   end
 end
