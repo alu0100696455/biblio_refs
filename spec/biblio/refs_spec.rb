@@ -52,7 +52,7 @@ describe Biblio::Refs do
   end
 
   it 'Debe existir un método que devuelva el título' do
-    expect(@ref1.titulo_to_s).should eq("Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide")
-    expect(@ref2.titulo_to_s).should eq("El Hobbit")
+    expect(@ref1.titulo_to_s).to eq("Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide")
+    expect(@ref2.titulo_to_s).to eq("El Hobbit")
   end
 end

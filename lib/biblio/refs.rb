@@ -30,6 +30,10 @@ module Biblio
     		end
     		final.chop
     	end
+
+    	def titulo_to_s
+    		titulo.to_s
+    	end
     end
   end
 end
