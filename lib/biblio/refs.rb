@@ -48,6 +48,10 @@ module Biblio
     	def num_edicion_to_s
     		num_edicion.to_s + " edition"
     	end
+
+    	def fecha_publicacion_to_s
+    		Date::MONTHNAMES[fecha_publicacion.mon] + " " + fecha_publicacion.day.to_s + ", " + fecha_publicacion.year.to_s
+		end
     end
   end
 end
