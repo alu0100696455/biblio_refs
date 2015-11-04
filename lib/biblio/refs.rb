@@ -72,6 +72,14 @@ module Biblio
 				end
 			end
 		end
+
+		def to_s
+			final = autores_to_s + "\n" + titulo_to_s + "\n"
+			if serie != nil
+				final += serie_to_s + "\n"
+			end
+			final += editorial_to_s + "; " + num_edicion_to_s + " (" + fecha_publicacion_to_s + ")\n" + isbn_to_s 
+		end
     end
   end
 end
