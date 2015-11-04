@@ -55,4 +55,9 @@ describe Biblio::Refs do
     expect(@ref1.titulo_to_s).to eq("Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide")
     expect(@ref2.titulo_to_s).to eq("El Hobbit")
   end
+
+  it 'Debe existir un método que devuelva la serie' do
+    expect(@ref1.serie_to_s).to eq("(The Facets of Ruby)")
+    expect(@ref2.serie_to_s).to be nil
+  end
 end
