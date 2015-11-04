@@ -65,4 +65,9 @@ describe Biblio::Refs do
     expect(@ref1.editorial_to_s).to eq("Pragmatic Bookshelf")
     expect(@ref2.editorial_to_s).to eq("Minotauro")
   end
+
+  it 'Debe existir un método que devuelva el número de edición' do
+    expect(@ref1.num_edicion_to_s).to eq("4 edition")
+    expect(@ref2.num_edicion_to_s).to eq("2 edition")
+  end
 end
