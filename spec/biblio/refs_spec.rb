@@ -75,4 +75,9 @@ describe Biblio::Refs do
     expect(@ref1.fecha_publicacion_to_s).to eq("July 7, 2013")
     expect(@ref2.fecha_publicacion_to_s).to eq("February 1, 1982")
   end
+
+  it 'Debe existir un método que devuelva el listado de números ISBN' do
+    expect(@ref1.isbn_to_s).to eq("ISBN-13: 978-1937785499\nISBN-10: 1937785491")
+    expect(@ref1.isbn_to_s).to eq("ISBN-10: 0345538374")
+  end
 end
