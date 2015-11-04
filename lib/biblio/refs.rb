@@ -52,6 +52,26 @@ module Biblio
     	def fecha_publicacion_to_s
     		Date::MONTHNAMES[fecha_publicacion.mon] + " " + fecha_publicacion.day.to_s + ", " + fecha_publicacion.year.to_s
 		end
+
+		def isbn_to_s
+			final = ""
+			if isbn.kind_of?(Array)
+				isbn.each do |num|
+					if num.length > 12
+						final += "ISBN-13: " + num + "\n"
+					else
+						final += "ISBN-10: " + num + "\n"
+					end
+				end
+				final.chop
+			else
+				if isbn.length > 12
+					final += "ISBN-13: " + isbn
+				else
+					final += "ISBN-10: " + isbn
+				end
+			end
+		end
     end
   end
 end
