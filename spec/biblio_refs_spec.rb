@@ -1,18 +1,18 @@
 require 'spec_helper'
 
 
-describe Biblio::Refs do
+describe BiblioRefs do
 
   before :each do
 
-    @ref1 = Biblio::Refs::Referencia.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, Date.parse('7th July 2013'), ['978-1937785499', '1937785491'])
-    @ref2 = Biblio::Refs::Referencia.new("J.R.R Tolkien", "El Hobbit", "Minotauro", 2, Date.parse('1st February 1982'), '0345538374')
+    @ref1 = BiblioRefs::Referencia.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, Date.parse('7th July 2013'), ['978-1937785499', '1937785491'])
+    @ref2 = BiblioRefs::Referencia.new("J.R.R Tolkien", "El Hobbit", "Minotauro", 2, Date.parse('1st February 1982'), '0345538374')
   end
 
   describe "Comprobación de la inicialización de los atributos de la clase" do
 
     it 'Tiene un número de versión' do
-      expect(Biblio::Refs::VERSION).not_to be nil
+      expect(BiblioRefs::VERSION).not_to be nil
     end
 
     it 'Deben de existir uno o más autores' do

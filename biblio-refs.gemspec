@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'biblio/refs/version'
+require 'biblio_refs/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "biblio-refs"
-  spec.version       = Biblio::Refs::VERSION
+  spec.version       = BiblioRefs::VERSION
   spec.authors       = ["Sergio Rodríguez"]
   spec.email         = ["alu0100699968@ull.edu.es"]
 
