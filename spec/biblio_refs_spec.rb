@@ -90,19 +90,17 @@ describe BiblioRefs do
       expect(@ref2.to_s).to eq ("J.R.R Tolkien.\nEl Hobbit\nMinotauro; 2 edition (February 1, 1982)\nISBN-10: 0345538374")
     end
   end
-end
-
-describe Nodo do
-  before :each do
-	@nodo1 = Nodo.new("último", nil)
-	@nodo2 = Nodo.new("primero", @nodo1)
-  end
 
   describe "Nodo" do
-  	it 'Debe existir un Nodo en la lista con sus datos y su siguiente' do
-  	  expect(@nodo2[:value]).to eq("primero")
-  	  expect(@nodo2[:next]).to eq(@nodo1)
-  	end
+    before :each do
+	  @nodo1 = Nodo.new("último", nil)
+	  @nodo2 = Nodo.new("primero", @nodo1)
+    end
+
+   	it '#Debe existir un Nodo en la lista con sus datos y su siguiente' do
+      expect(@nodo2[:value]).to eq("primero")
+      expect(@nodo2[:next]).to eq(@nodo1)
+    end
   end
 end
 
