@@ -102,5 +102,16 @@ describe BiblioRefs do
       expect(@nodo2[:next]).to eq(@nodo1)
     end
   end
+
+  describe "List" do
+  	before :each do
+  	  @lista1 = BiblioRefs::List.new("elemento")
+  	  @lista2 = BiblioRefs::List.new(["elemento1", "elemento2"])
+  	end
+
+  	it "#Se extrae el primer elemento de la lista" do
+  	  expect(@lista1.pop).to eq("elemento")
+  	  expect(@lista2.pop).to eq("elemento1")
+  	end
 end
 
