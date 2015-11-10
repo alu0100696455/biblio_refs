@@ -111,13 +111,18 @@ describe BiblioRefs do
 
     it '#Debe existir una lista con su cabeza' do
       expect(@lista1.head[:value]).to eq("elemento")
-      expect(@lista1.head[:value]).to eq(["elemento1", "elemento2"])
+      expect(@lista2.head[:value]).to eq(["elemento1", "elemento2"])
     end
 
   	it "#Se extrae el primer elemento de la lista" do
   	  expect(@lista1.pop).to eq("elemento")
   	  expect(@lista2.pop).to eq(["elemento1", "elemento2"])
   	end
+
+    it "#Se puede insertar un elemento" do
+      @lista1.push("nuevo")
+      expect(@lista1.head[:value]).to eq("nuevo")
+    end
   end
 end
 
