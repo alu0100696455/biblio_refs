@@ -114,25 +114,41 @@ describe BiblioRefs do
       expect(@lista2.head[:value]).to eq(["elemento1", "elemento2"])
     end
 
-  	it "#Se extrae el primer elemento de la lista" do
+  	it '#Se extrae el primer elemento de la lista' do
   	  expect(@lista1.pop).to eq("elemento")
   	  expect(@lista2.pop).to eq(["elemento1", "elemento2"])
   	end
 
-    it "#Se puede insertar un elemento" do
+    it '#Se puede insertar un elemento' do
       @lista1.push("nuevo")
       expect(@lista1.head[:next][:value]).to eq("nuevo")
     end
 
-    it "#Se pueden insertar varios elementos" do
+    it '#Se pueden insertar varios elementos' do
       @lista1.push(["nuevo1", "nuevo2"])
       expect(@lista1.head[:next][:value]).to eq("nuevo1")
       expect(@lista1.head[:next][:next][:value]).to eq("nuevo2")
     end
 
-    it "#Debe existir un método que devuelve la lista formateada" do
+    it '#Debe existir un método que devuelve la lista formateada' do
       @lista1.push(["elemento2", "elemento3"])
       expect(@lista1.to_s).to eq("Lista: elemento -> elemento2 -> elemento3")
+    end
+  end
+
+  describe "Lista de referencias" do
+    before :each do
+      @refa = BiblioRefs::Referencia.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, Date.parse('7th July 2013'), ['978-1937785499', '1937785491'])
+      @refb = BiblioRefs::Referencia.new("Scott Chacon", "Pro Git 2009th Edition", "Pro", "Apress", 2009, Date.parse('27th August 2009'), ['978-1430218333', '1430218339'])
+      @refc = BiblioRefs::Referencia.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "O'Reilly Media", 1, Date.parse('4th February 2008'), ['0596516177', '978-0596516178'])
+      @refd = BiblioRefs::Referencia.new(["David Chelimsky", "Dave Astels", "Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"], "The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends", "The Facets of Ruby", "Pragmatic Bookshelf", 1, Date.parse('25th December 2010'), ['1934356379', '978-1934356371'])
+      @refe = BiblioRefs::Referencia.new("Richard E. Silverman", "Git Pocket Guide", "O'Reilly Media", 1, Date.parse('2nd August 2013'), ['1449325866', '978-1449325862'])
+    
+      @lista = List.new([@refa, @refb, @refc, @refd, @refe])
+    end
+
+    it '#Se puede crear una lista de Referencias Biográficas' do
+      expect(@lista.to_s).to eq("Lista: #{@refa} -> #{@refb} -> #{@refc} -> #{@refd} -> #{@refe}")
     end
   end
 end
