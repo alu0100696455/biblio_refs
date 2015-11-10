@@ -123,6 +123,12 @@ describe BiblioRefs do
       @lista1.push("nuevo")
       expect(@lista1.head[:next][:value]).to eq("nuevo")
     end
+
+    it "#Se pueden insertar varios elementos" do
+      @lista1.push(["nuevo1", "nuevo2"])
+      expect(@lista1.head[:next][:value]).to eq("nuevo1")
+      expect(@lista1.head[:next][:next][:value]).to eq("nuevo2")
+    end
   end
 end
 
