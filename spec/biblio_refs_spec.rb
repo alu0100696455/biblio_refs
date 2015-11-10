@@ -121,7 +121,7 @@ describe BiblioRefs do
 
     it "#Se puede insertar un elemento" do
       @lista1.push("nuevo")
-      expect(@lista1.head[:value]).to eq("nuevo")
+      expect(@lista1.head[:next][:value]).to eq("nuevo")
     end
   end
 end

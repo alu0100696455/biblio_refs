@@ -14,5 +14,13 @@ module BiblioRefs
       @head = @head[:next]
       nodo[:value]
     end
+
+    def push(nodo)
+      aux = @head
+      while aux[:next] do
+        aux = aux[:next]
+      end
+      aux[:next] = Nodo.new(nodo, nil) 
+    end
   end
 end
