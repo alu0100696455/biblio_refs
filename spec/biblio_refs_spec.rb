@@ -129,6 +129,11 @@ describe BiblioRefs do
       expect(@lista1.head[:next][:value]).to eq("nuevo1")
       expect(@lista1.head[:next][:next][:value]).to eq("nuevo2")
     end
+
+    it "#Debe existir un método que devuelve la lista formateada" do
+      @lista1.push(["elemento2", "elemento3"])
+      expect(@lista1.to_s).to eq("Lista: elemento -> elemento2 -> elemento3")
+    end
   end
 end
 
