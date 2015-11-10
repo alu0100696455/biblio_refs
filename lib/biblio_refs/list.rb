@@ -31,5 +31,15 @@ module BiblioRefs
         aux[:next] = Nodo.new(nodo, nil)
       end
     end
+
+      def to_s
+      aux = @head
+      string = "Lista: "
+      while aux[:next] do
+        string += "#{aux[:value]}" + " -> "
+        aux = aux[:next]
+      end
+      string += "#{aux[:value]}"
+    end
   end
 end
