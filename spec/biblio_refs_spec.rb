@@ -93,8 +93,8 @@ describe BiblioRefs do
 
   describe "Nodo" do
     before :each do
-	  @nodo1 = Nodo.new("último", nil)
-	  @nodo2 = Nodo.new("primero", @nodo1)
+      @nodo1 = Nodo.new("último", nil)
+      @nodo2 = Nodo.new("primero", @nodo1)
     end
 
    	it '#Debe existir un Nodo en la lista con sus datos y su siguiente' do
@@ -111,7 +111,8 @@ describe BiblioRefs do
 
   	it "#Se extrae el primer elemento de la lista" do
   	  expect(@lista1.pop).to eq("elemento")
-  	  expect(@lista2.pop).to eq("elemento1")
+  	  expect(@lista2.pop).to eq(["elemento1", "elemento2"])
   	end
+  end
 end
 
