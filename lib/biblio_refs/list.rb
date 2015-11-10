@@ -17,10 +17,19 @@ module BiblioRefs
 
     def push(nodo)
       aux = @head
-      while aux[:next] do
-        aux = aux[:next]
+      if nodo.kind_of?(Array)
+        nodo.each do |n|
+          while aux[:next] do
+            aux = aux[:next]
+          end
+          aux[:next] = Nodo.new(n, nil)
+        end
+      else
+        while aux[:next] do
+          aux = aux[:next]
+        end
+        aux[:next] = Nodo.new(nodo, nil)
       end
-      aux[:next] = Nodo.new(nodo, nil) 
     end
   end
 end
