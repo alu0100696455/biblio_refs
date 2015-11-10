@@ -111,12 +111,12 @@ describe BiblioRefs do
 
     it '#Debe existir una lista con su cabeza' do
       expect(@lista1.head[:value]).to eq("elemento")
-      expect(@lista2.head[:value]).to eq(["elemento1", "elemento2"])
+      expect(@lista2.head[:value]).to eq("elemento1")
     end
 
   	it '#Se extrae el primer elemento de la lista' do
   	  expect(@lista1.pop).to eq("elemento")
-  	  expect(@lista2.pop).to eq(["elemento1", "elemento2"])
+  	  expect(@lista2.pop).to eq("elemento1")
   	end
 
     it '#Se puede insertar un elemento' do
@@ -144,7 +144,7 @@ describe BiblioRefs do
       @refd = BiblioRefs::Referencia.new(["David Chelimsky", "Dave Astels", "Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"], "The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends", "The Facets of Ruby", "Pragmatic Bookshelf", 1, Date.parse('25th December 2010'), ['1934356379', '978-1934356371'])
       @refe = BiblioRefs::Referencia.new("Richard E. Silverman", "Git Pocket Guide", "O'Reilly Media", 1, Date.parse('2nd August 2013'), ['1449325866', '978-1449325862'])
     
-      @lista = List.new([@refa, @refb, @refc, @refd, @refe])
+      @lista = BiblioRefs::List.new([@refa, @refb, @refc, @refd, @refe])
     end
 
     it '#Se puede crear una lista de Referencias Biográficas' do

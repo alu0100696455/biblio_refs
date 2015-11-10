@@ -6,7 +6,13 @@ module BiblioRefs
     attr_accessor :head
 
 		def initialize(nodo)
-      @head = Nodo.new(nodo, nil)
+      if nodo.kind_of?(Array)
+        @head = Nodo.new(nodo[0], nil)
+        nodo.shift
+        push(nodo)
+      else
+        @head = Nodo.new(nodo, nil)
+      end
     end
 
     def pop
