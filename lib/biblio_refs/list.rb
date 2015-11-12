@@ -5,13 +5,11 @@ module BiblioRefs
 	class List
     attr_accessor :head
 
-		def initialize(nodo)
-      if nodo.kind_of?(Array)
-        @head = Nodo.new(nodo[0], nil)
+		def initialize(*nodo)
+      @head = Nodo.new(nodo[0], nil)
+      if nodo.size > 1
         nodo.shift
-        push(nodo)
-      else
-        @head = Nodo.new(nodo, nil)
+        push(*nodo)
       end
     end
 
@@ -21,20 +19,13 @@ module BiblioRefs
       nodo[:value]
     end
 
-    def push(nodo)
+    def push(*nodo)
       aux = @head
-      if nodo.kind_of?(Array)
-        nodo.each do |n|
-          while aux[:next] do
-            aux = aux[:next]
-          end
-          aux[:next] = Nodo.new(n, nil)
-        end
-      else
+      nodo.each do |n|
         while aux[:next] do
           aux = aux[:next]
         end
-        aux[:next] = Nodo.new(nodo, nil)
+        aux[:next] = Nodo.new(n, nil)
       end
     end
 

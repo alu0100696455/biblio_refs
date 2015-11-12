@@ -106,7 +106,7 @@ describe BiblioRefs do
   describe "List" do
   	before :each do
   	  @lista1 = BiblioRefs::List.new("elemento")
-  	  @lista2 = BiblioRefs::List.new(["elemento1", "elemento2"])
+  	  @lista2 = BiblioRefs::List.new("elemento1", "elemento2")
   	end
 
     it '#Debe existir una lista con su cabeza' do
@@ -125,13 +125,13 @@ describe BiblioRefs do
     end
 
     it '#Se pueden insertar varios elementos' do
-      @lista1.push(["nuevo1", "nuevo2"])
+      @lista1.push("nuevo1", "nuevo2")
       expect(@lista1.head[:next][:value]).to eq("nuevo1")
       expect(@lista1.head[:next][:next][:value]).to eq("nuevo2")
     end
 
     it '#Debe existir un método que devuelve la lista formateada' do
-      @lista1.push(["elemento2", "elemento3"])
+      @lista1.push("elemento2", "elemento3")
       expect(@lista1.to_s).to eq("Lista: elemento -> elemento2 -> elemento3")
     end
   end
@@ -144,7 +144,7 @@ describe BiblioRefs do
       @refd = BiblioRefs::Referencia.new(["David Chelimsky", "Dave Astels", "Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"], "The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends", "The Facets of Ruby", "Pragmatic Bookshelf", 1, Date.parse('25th December 2010'), ['1934356379', '978-1934356371'])
       @refe = BiblioRefs::Referencia.new("Richard E. Silverman", "Git Pocket Guide", "O'Reilly Media", 1, Date.parse('2nd August 2013'), ['1449325866', '978-1449325862'])
     
-      @lista = BiblioRefs::List.new([@refa, @refb, @refc, @refd, @refe])
+      @lista = BiblioRefs::List.new(@refa, @refb, @refc, @refd, @refe)
     end
 
     it '#Se puede crear una lista de Referencias Biográficas' do
