@@ -104,7 +104,7 @@ describe BiblioRefs do
     end
 
     it '#Debe existir un Nodo con su anterior' do
-      expect(@nodo1[:prev]).to_eq(@nodo2)
+      expect(@nodo1[:prev]).to eq(@nodo2)
     end
   end
 
