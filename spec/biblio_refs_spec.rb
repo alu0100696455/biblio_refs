@@ -170,6 +170,7 @@ describe BiblioRefs do
       @libro = BiblioRefs::Libro.new
       @publicacion = BiblioRefs::PublicacionPeriodica.new
       @revista = BiblioRefs::Revista.new
+      @articulo = BiblioRefs::ArticuloPeriodico.new
     end
 
     it "#El objeto de la clase Libro es hijo de la clase Referencia" do
@@ -182,6 +183,10 @@ describe BiblioRefs do
 
     it "#El objeto de la clase Revista es hijo de la clase PublicacionPeriodica" do
       expect(@publicacion).to be_a BiblioRefs::PublicacionPeriodica
+    end
+
+    it "#El objeto de la clase ArticuloPeriodico es hijo de la clase PublicacionPeriodica" do
+      expect(@articulo).to be_a BiblioRefs::PublicacionPeriodica
     end
   end
 end
