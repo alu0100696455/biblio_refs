@@ -168,10 +168,15 @@ describe BiblioRefs do
   describe "Jerarquía de clases" do
     before :each do
       @libro = BiblioRefs::Libro.new
+      @publicacion = BiblioRefs::PublicacionPeriodica.new
     end
 
     it "#El objeto de la clase Libro es hijo de la clase Referencia" do
       expect(@libro).to be_a BiblioRefs::Referencia
+    end
+
+    it "#El objeto de la clase PublicacionPeriodica es hijo de la clase Referencia" do
+      expect(@publicacion).to be_a BiblioRefs::Referencia
     end
   end
 end
