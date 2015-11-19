@@ -184,14 +184,17 @@ describe BiblioRefs do
 
     it "#El objeto de la clase Revista es hijo de la clase PublicacionPeriodica" do
       expect(@publicacion).to be_a BiblioRefs::PublicacionPeriodica
+      expect(@publicacion).to be_a BiblioRefs::Referencia
     end
 
     it "#El objeto de la clase ArticuloPeriodico es hijo de la clase PublicacionPeriodica" do
       expect(@articulo).to be_a BiblioRefs::PublicacionPeriodica
+      expect(@publicacion).to be_a BiblioRefs::Referencia
     end
 
     it "#El objeto de la clase DocumentoElectronico es hijo de la clase PublicacionPeriodica" do
       expect(@documento).to be_a BiblioRefs::PublicacionPeriodica
+      expect(@publicacion).to be_a BiblioRefs::Referencia
     end
   end
 end
