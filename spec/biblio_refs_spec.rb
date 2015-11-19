@@ -164,5 +164,15 @@ describe BiblioRefs do
       expect(@lista.to_s).to eq("Lista: #{@refa} -> #{@refb} -> #{@refc} -> #{@refd} -> #{@refe}")
     end
   end
+
+  describe "Jerarquía de clases" do
+    before :each do
+      @libro = BiblioRefs::Libro.new
+    end
+
+    it "#El objeto de la clase Libro es hijo de la clase Referencia" do
+      expect(@libro).to be_a BiblioRefs::Referencia
+    end
+  end
 end
 
