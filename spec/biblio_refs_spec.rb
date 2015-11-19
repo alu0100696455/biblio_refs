@@ -171,7 +171,7 @@ describe BiblioRefs do
       @publicacion = BiblioRefs::PublicacionPeriodica.new
       @revista = BiblioRefs::Revista.new
       @articulo = BiblioRefs::ArticuloPeriodico.new
-      @documento = BiblioRefs::DocumentoElectronico
+      @documento = BiblioRefs::DocumentoElectronico.new
     end
 
     it "#El objeto de la clase Libro es hijo de la clase Referencia" do
