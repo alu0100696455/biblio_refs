@@ -210,9 +210,19 @@ describe BiblioRefs do
       expect(@refa == @refb).to be true
     end
 
-    it "#Se puede comparar dos objetos Referencias para saber cual es mayor o menor según la fecha de publicación" do
-      expect(@refa > @refc).to be true
-      expect(@refd < @refc).to be true
+    context "#Se puede comparar dos objetos Referencias para saber cual es mayor o menor según la fecha de publicación" do
+      it "#La fecha de publicación de la referencia A es más reciente que la de C" do
+        expect(@refa > @refc).to be true
+      end
+      it "#La fecha de publicación de la referencia A es más reciente o igual que la de C" do
+        expect(@refa >= @refc).to be true
+      end
+      it "#La fecha de publicación de la referencia D es más antigua que la de C" do
+        expect(@refd < @refc).to be true
+      end
+      it "#La fecha de publicación de la referencia D es más antigua o igual que la de C" do
+        expect(@refd < @refc).to be true
+      end
     end
   end
 end
