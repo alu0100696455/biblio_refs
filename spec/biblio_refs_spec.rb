@@ -209,6 +209,11 @@ describe BiblioRefs do
     it "#Se puede comparar dos objetos Referencias para saber si son iguales" do
       expect(@refa == @refb).to be true
     end
+
+    it "#Se puede comparar dos objetos Referencias para saber cual es mayor o menor según la fecha de publicación" do
+      expect(@refa > @refc).to be true
+      expect(@refd < @refc).to be true
+    end
   end
 end
 
