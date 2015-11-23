@@ -2,6 +2,8 @@ require 'date'
 
 module BiblioRefs
   class Referencia
+    include Comparable
+
     attr_accessor :autores, :titulo, :serie, :editorial, :num_edicion, :fecha_publicacion, :isbn
 
     def initialize(autores, titulo, serie = nil, editorial, num_edicion, fecha_publicacion, isbn)
@@ -12,6 +14,10 @@ module BiblioRefs
       @num_edicion = num_edicion
       @fecha_publicacion = fecha_publicacion
       @isbn = isbn
+    end
+
+    def == (ref)
+      self.to_s == ref.to_s
     end
 
     def autores_to_s
