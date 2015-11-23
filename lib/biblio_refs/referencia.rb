@@ -16,7 +16,13 @@ module BiblioRefs
       @isbn = isbn
     end
 
+    def <=> (ref)
+      return nil unless ref.instance_of? Referencia
+      @fecha_publicacion <=> ref.fecha_publicacion
+    end
+
     def == (ref)
+      return nil unless ref.instance_of? Referencia
       self.to_s == ref.to_s
     end
 
