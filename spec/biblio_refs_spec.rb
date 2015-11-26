@@ -255,10 +255,10 @@ describe BiblioRefs do
       expect(@list2.count).to eq(4)
     end
     it "#Comprobrando el método detect" do
-      expect(@list3.detect {|i| i == 0}).to eq(2)
-      expect(@list4.detect {|i| i == 0}).to eq(1)
-      expect(@list1.find {|i| i == 1}).to eq(3)
-      expect(@list2.find {|i| i == 1}).to eq(nil)
+      expect(@list3.detect {|i| i == 0}).to eq(0)
+      expect(@list4.detect {|i| i % 1 == 0}).to eq(1)
+      expect(@list1.find {|i| i == 4}).to eq(nil)
+      expect(@list2.find {|i| i % 6 == 1}).to eq(7)
     end
     it "#Comprobrando drop" do
       expect(@list3.drop(1)).to eq([1, 0])
