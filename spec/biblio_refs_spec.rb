@@ -225,5 +225,58 @@ describe BiblioRefs do
       end
     end
   end
-end
 
+  describe "Haciendo la clase Lista enumerable" do
+    before :each do
+      @list1 = BiblioRefs::List.new(3, 2, 1)
+      @list2 = BiblioRefs::List.new(4, 5, 6, 7)
+      @list3 = BiblioRefs::List.new(0, 1, 0)
+      @list4 = BiblioRefs::List.new(1, 0, 1, 0)
+      @list5 = BiblioRefs::List.new(false, nil)
+    end
+    it "#Comprobrando el método all? con un bloque vacío" do
+      expect(@list1.all?).to eq(true)
+      expect(@list2.all?).to eq(true)
+      expect(@list5.all?).to eq(false)
+    end 
+    it "#Comprobrando el método any?" do
+      expect(@list3.any?).to eq(true)
+      expect(@list4.any?).to eq(true)
+      expect(@list5.any?).to eq(false)
+    end 
+    it "#Comprobrando el método collect" do
+      expect(@list1.map{|i| i*i}).to eq([9, 4, 1])
+      expect(@list2.map{|i| i*i}).to eq([16, 25, 36, 49])
+      expect(@list3.collect{|i| i*i}).to eq([0, 1, 0])
+      expect(@list4.collect{|i| i*i}).to eq([1, 0, 1, 0])
+    end 
+    it "#Comprobrando el método count" do
+      expect(@list1.count).to eq(3)
+      expect(@list2.count).to eq(4)
+    end
+    it "#Comprobrando el método detect" do
+      expect(@list3.detect {|i| i == 0}).to eq(2)
+      expect(@list4.detect {|i| i == 0}).to eq(1)
+      expect(@list1.find {|i| i == 1}).to eq(3)
+      expect(@list2.find {|i| i == 1}).to eq(nil)
+    end
+    it "#Comprobrando drop" do
+      expect(@list3.drop(1)).to eq([1, 0])
+      expect(@list4.drop(2)).to eq([1, 0])
+    end
+    it "#Comprobrando max" do
+      expect(@list1.max).to eq(3)
+      expect(@list2.max).to eq(7)
+    end
+    it "#Comprobrando min" do
+      expect(@list3.min).to eq(0)
+      expect(@list4.min).to eq(0)
+    end
+    it "#Comprobrando sort" do
+      expect(@list1.sort).to eq([1, 2, 3])
+      expect(@list2.sort).to eq([4, 5, 6, 7])
+      expect(@list3.sort).to eq([0, 0, 1])
+      expect(@list4.sort).to eq([0, 0, 1, 1])
+    end
+  end
+end
