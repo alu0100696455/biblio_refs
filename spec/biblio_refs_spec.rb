@@ -221,7 +221,7 @@ describe BiblioRefs do
         expect(@refd < @refc).to be true
       end
       it "#La fecha de publicación de la referencia D es más antigua o igual que la de C" do
-        expect(@refd < @refc).to be true
+        expect(@refd <= @refc).to be true
       end
     end
   end
@@ -277,6 +277,20 @@ describe BiblioRefs do
       expect(@list2.sort).to eq([4, 5, 6, 7])
       expect(@list3.sort).to eq([0, 0, 1])
       expect(@list4.sort).to eq([0, 0, 1, 1])
+    end
+  end
+
+  describe "Lista de citas y referencias bibliográficas en formato APA" do
+    before :each do
+      @refa = BiblioRefs::Libro.new("Autor Abcd Abcd", Date.parse('17th July 2003'), "Título del libro", "Subtítulo del libro", 1, 3, "Editor", ['999-9999999999', '9999999999'])
+      @refb = BiblioRefs::Articulo.new(["Autor Abcd Abcd", "Autor Bcde Bcde"], Date.parse('4th August 2005'), "Título del artículo", ["Editor1", "Editor2"], "Titulo de la obra", 201, 1, 3, "Editor", "9999999999")
+      @refc = BiblioRefs::ArticuloPeriodico.new("Autor Abcd Abcd", Date.parse('17th February 2013'), "Titulo del artículo", "Periódico", 2, "9999999999")
+      @refd = BiblioRefs::DocumentoElectronico.new("Autor Bcde", Date.parse('21th Juny 2000'), "Título", 1, "Tipo de medio", "Editor", "Vía de disponibilidad", Date.parse('23th November 2011'), "9999999999")    
+      @lista = BiblioRefs::List.new(@refa, @refb, @refc, @refd)
+    end
+
+    it '#Se puede crear una lista con objetos Libro, Articulo, ArtículoPeriodico y DocumentoElectronico' do
+      expect(@lista.to_s).to eq("Lista: #{@refa} -> #{@refb} -> #{@refc} -> #{@refd}")
     end
   end
 end
