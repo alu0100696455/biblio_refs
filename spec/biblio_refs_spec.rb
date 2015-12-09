@@ -167,11 +167,11 @@ describe BiblioRefs do
 
   describe "Jerarquía de clases" do
     before :each do
-      @libro = BiblioRefs::Libro.new
-      @publicacion = BiblioRefs::PublicacionPeriodica.new
+      @publicacion = BiblioRefs::PublicacionPeriodica.new("Autor Abcd", Date.parse('22th July 2014'), "Titulo", "Editorial", 1, "999999999")
       @revista = BiblioRefs::Revista.new
-      @articulo = BiblioRefs::ArticuloPeriodico.new
-      @documento = BiblioRefs::DocumentoElectronico.new
+      @libro = BiblioRefs::Libro.new("Autor Abcd Abcd", Date.parse('17th July 2003'), "Título del libro", "Subtítulo del libro", 1, 3, "Editor", ['999-9999999999', '9999999999'])
+      @articulo = BiblioRefs::ArticuloPeriodico.new("Autor Abcd Abcd", Date.parse('17th February 2013'), "Titulo del artículo", "Periódico", 2, "9999999999")
+      @documento = BiblioRefs::DocumentoElectronico.new("Autor Bcde", Date.parse('21th Juny 2000'), "Título", 1, "Tipo de medio", "Editor", "Vía de disponibilidad", Date.parse('23th November 2011'), "9999999999")    
     end
 
     it "#El objeto de la clase Libro es hijo de la clase Referencia" do
