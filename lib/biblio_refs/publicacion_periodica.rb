@@ -17,5 +17,9 @@ module BiblioRefs
       end
     end 
 
+    def to_s
+      super
+    end
+    
   end
 end

@@ -9,5 +9,9 @@ module BiblioRefs
       @volumen = volumen
     end
 
+    def to_s
+      super
+    end
+    
   end
 end

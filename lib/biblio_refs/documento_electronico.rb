@@ -10,5 +10,9 @@ module BiblioRefs
       @fecha_acceso = @fecha_acceso
     end
 
+    def to_s
+      super
+    end
+    
   end
 end

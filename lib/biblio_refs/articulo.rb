@@ -10,5 +10,9 @@ module BiblioRefs
       @num_paginas = num_paginas
     end
 
+    def to_s
+      super
+    end
+    
   end
 end

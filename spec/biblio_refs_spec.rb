@@ -290,7 +290,7 @@ describe BiblioRefs do
     end
 
     it '#Se puede crear una lista con objetos Libro, Articulo, ArtículoPeriodico y DocumentoElectronico' do
-      expect(@lista.to_s).to eq("Lista: #{@refa} -> #{@refb} -> #{@refc} -> #{@refd}")
+      expect(@lista_citas.to_s).to eq("Lista: #{@refa} -> #{@refb} -> #{@refc} -> #{@refd}")
     end
   end
 end
