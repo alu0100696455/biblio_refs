@@ -286,7 +286,7 @@ describe BiblioRefs do
       @refb = BiblioRefs::Articulo.new(["Autor Abcd Abcd", "Autor Bcde Bcde"], Date.parse('4th August 2005'), "Título del artículo", ["Editor1", "Editor2"], "Titulo de la obra", 201, 1, 3, "Editor", "9999999999")
       @refc = BiblioRefs::ArticuloPeriodico.new("Autor Abcd Abcd", Date.parse('17th February 2013'), "Titulo del artículo", "Periódico", 2, "9999999999")
       @refd = BiblioRefs::DocumentoElectronico.new("Autor Bcde", Date.parse('21th Juny 2000'), "Título", 1, "Tipo de medio", "Editor", "Vía de disponibilidad", Date.parse('23th November 2011'), "9999999999")    
-      @lista = BiblioRefs::List.new(@refa, @refb, @refc, @refd)
+      @lista_citas = BiblioRefs::ListAPA.new(@refa, @refb, @refc, @refd)
     end
 
     it '#Se puede crear una lista con objetos Libro, Articulo, ArtículoPeriodico y DocumentoElectronico' do
