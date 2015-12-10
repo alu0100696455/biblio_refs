@@ -18,7 +18,45 @@ module BiblioRefs
 
     def <=> (ref)
       return nil unless ref.instance_of? Referencia
-      @fecha_publicacion <=> ref.fecha_publicacion
+      if(@autores.kind_of?(Array) && ref.autores.kind_of?(Array))
+        if((@autores[0] <=> ref.autores[0]) == 0)
+          if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
+            @titulo <=> ref.titulo
+          else
+            @fecha_publicacion <=> ref.fecha_publicacion
+          end
+        else
+          @autores[0] <=> ref.autores[0]
+        end
+      elsif(@autores.kind_of?(Array))
+        if((@autores[0] <=> ref.autores) == 0)
+          if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
+            @titulo <=> ref.titulo
+          else
+            @fecha_publicacion <=> ref.fecha_publicacion
+          end
+        else
+          @autores[0] <=> ref.autores
+        end
+      elsif(ref.autores.kind_of?(Array))
+        if((@autores <=> ref.autores[0]) == 0)
+          if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
+            @titulo <=> ref.titulo
+          else
+            @fecha_publicacion <=> ref.fecha_publicacion
+          end
+        else
+          @autores <=> ref.autores[0]
+        end
+      elsif((@autores <=> ref.autores) == 0)
+        if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
+          @titulo <=> ref.titulo
+        else
+          @fecha_publicacion <=> ref.fecha_publicacion
+        end
+      else
+        @autores <=> ref.autores
+      end
     end
 
     def == (ref)

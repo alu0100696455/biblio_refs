@@ -197,7 +197,7 @@ describe BiblioRefs do
       expect(@publicacion).to be_a BiblioRefs::Referencia
     end
   end
-
+=begin
   describe "Instancias de la clase Referencia comparables" do
     before :each do
       @refa = BiblioRefs::Referencia.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, Date.parse('7th July 2013'), ['978-1937785499', '1937785491'])
@@ -225,7 +225,7 @@ describe BiblioRefs do
       end
     end
   end
-
+=end
   describe "Haciendo la clase Lista enumerable" do
     before :each do
       @list1 = BiblioRefs::List.new(3, 2, 1)
@@ -291,6 +291,30 @@ describe BiblioRefs do
 
     it '#Se puede crear una lista con objetos Libro, Articulo, ArtículoPeriodico y DocumentoElectronico' do
       expect(@lista_citas.to_s).to eq("Lista: #{@refa} -> #{@refb} -> #{@refc} -> #{@refd}")
+    end
+  end
+
+  describe "Instancias de la clase Referencia comparables" do
+    before :each do
+      @refa = BiblioRefs::Referencia.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, Date.parse('7th July 2013'), ['978-1937785499', '1937785491'])
+      @refb = BiblioRefs::Referencia.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"], "Programming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, Date.parse('8th July 2013'), ['978-1937785499', '1937785491'])
+      @refc = BiblioRefs::Referencia.new("Scott Chacon", "Pro Git 2009th Edition", "Pro", "Apress", 2009, Date.parse('27th August 2009'), ['978-1430218333', '1430218339'])
+      @refd = BiblioRefs::Referencia.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "O'Reilly Media", 1, Date.parse('4th February 2008'), ['0596516177', '978-0596516178'])
+    end
+
+    context "#Se ordenan correctamente los objetos Referencia" do
+      it "#La referencia C debería ir después que la referencia B" do
+        expect(@refc > @refb).to be true
+      end
+      it "#La referencia B debería ir después que la referencia A" do
+        expect(@refb >= @refa).to be true
+      end
+      it "#La referencia D debería ir antes que la referencia C" do
+        expect(@refd < @refc).to be true
+      end
+      it "#La referencia A debería ir antes que la referencia D" do
+        expect(@refa <= @refd).to be true
+      end
     end
   end
 end
