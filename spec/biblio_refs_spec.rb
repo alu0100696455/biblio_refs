@@ -302,6 +302,9 @@ describe BiblioRefs do
       @refd = BiblioRefs::Referencia.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "O'Reilly Media", 1, Date.parse('4th February 2008'), ['0596516177', '978-0596516178'])
     end
 
+    it "#Se puede comparar dos objetos Referencias para saber si son iguales" do
+      expect(@refa == @refb).to be true
+    end
     it "#La referencia C debería ir después que la referencia B" do
       expect(@refc > @refb).to be true
     end
