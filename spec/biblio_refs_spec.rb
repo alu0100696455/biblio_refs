@@ -51,8 +51,8 @@ describe BiblioRefs do
 
   describe "Comprobación de métodos to_s" do
     it 'Debe existir un método que devuelva los autores' do
-      expect(@ref1.autores_to_s).to eq("Dave Thomas, Andy Hunt, Chad Fowler.")
-      expect(@ref2.autores_to_s).to eq("J.R.R Tolkien.")
+      expect(@ref1.autores_to_s).to eq("Dave Thomas & Andy Hunt & Chad Fowler")
+      expect(@ref2.autores_to_s).to eq("J.R.R Tolkien")
     end
 
     it 'Debe existir un método que devuelva el título' do
@@ -86,7 +86,7 @@ describe BiblioRefs do
     end
 
     it 'Debe existir un método que devuelva la referencia formateada' do
-      expect(@ref1.to_s).to eq ("Dave Thomas, Andy Hunt, Chad Fowler.\nProgramming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide\n(The Facets of Ruby)\nPragmatic Bookshelf; 4 edition (July 7, 2013)\nISBN-13: 978-1937785499\nISBN-10: 1937785491")
+      expect(@ref1.to_s).to eq ("Dave Thomas & Andy Hunt & Chad Fowler.\nProgramming Ruby 1.9 & 2.0: The Pragmatic Programmers' Guide\n(The Facets of Ruby)\nPragmatic Bookshelf; 4 edition (July 7, 2013)\nISBN-13: 978-1937785499\nISBN-10: 1937785491")
       expect(@ref2.to_s).to eq ("J.R.R Tolkien.\nEl Hobbit\nMinotauro; 2 edition (February 1, 1982)\nISBN-10: 0345538374")
     end
   end
@@ -282,10 +282,10 @@ describe BiblioRefs do
 
   describe "Lista de citas y referencias bibliográficas en formato APA" do
     before :each do
-      @refa = BiblioRefs::Libro.new("Autor Abcd Abcd", Date.parse('17th July 2003'), "Título del libro", "Subtítulo del libro", 1, 3, "Editor", ['999-9999999999', '9999999999'])
-      @refb = BiblioRefs::Articulo.new(["Autor Abcd Abcd", "Autor Bcde Bcde"], Date.parse('4th August 2005'), "Título del artículo", ["Editor1", "Editor2"], "Titulo de la obra", 201, 1, 3, "Editor", "9999999999")
-      @refc = BiblioRefs::ArticuloPeriodico.new("Autor Abcd Abcd", Date.parse('17th February 2013'), "Titulo del artículo", "Periódico", 2, "9999999999")
-      @refd = BiblioRefs::DocumentoElectronico.new("Autor Bcde", Date.parse('21th Juny 2000'), "Título", 1, "Tipo de medio", "Editor", "Vía de disponibilidad", Date.parse('23th November 2011'), "9999999999")    
+      @refa = BiblioRefs::Libro.new("Autor, A. A.", 1993, "título del libro", "subtítulo del libro", 1, 3, "editor", ['999-9999999999', '9999999999'])
+      @refb = BiblioRefs::Articulo.new(["Autor, B. B.", "Autor, A. A"], 2005, "título del artículo", ["A. Editor", "B. Editor"], "título de la obra", 201, 1, 3, "editor", "9999999999")
+      @refc = BiblioRefs::ArticuloPeriodico.new("Autor, A. A.", Date.parse('17th February 2013'), "título del artículo", "periódico", 2, "9999999999")
+      @refd = BiblioRefs::DocumentoElectronico.new("Autor, B.B", Date.parse('21th Juny 2000'), "título", 1, "tipo de medio", "editor", "vía de disponibilidad", Date.parse('23th November 2011'), "9999999999")    
       @lista_citas = BiblioRefs::ListAPA.new(@refa, @refb, @refc, @refd)
     end
 

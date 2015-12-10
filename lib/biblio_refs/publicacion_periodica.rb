@@ -18,8 +18,8 @@ module BiblioRefs
     end 
 
     def to_s
-      super
+      super 
     end
-    
+
   end
 end

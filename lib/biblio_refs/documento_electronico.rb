@@ -7,12 +7,16 @@ module BiblioRefs
       super(autores, fecha_publicacion, titulo, editorial, num_edicion, issn)
       @tipo_medio = tipo_medio
       @via_disponible = via_disponible
-      @fecha_acceso = @fecha_acceso
+      @fecha_acceso = fecha_acceso
+    end
+
+    def fecha_acceso_to_s
+      Date::MONTHNAMES[fecha_acceso.mon] + " " + fecha_acceso.day.to_s + ", " + fecha_acceso.year.to_s
     end
 
     def to_s
-      super
+      formato_apa + " (" + num_edicion.to_s + "). [" + tipo_medio.capitalize + "]. Lugar de publicación: " + editorial.to_s.capitalize + ". Disponible en: " + via_disponible.to_s.capitalize + " [" + fecha_acceso_to_s + "]."  
     end
-    
+
   end
 end

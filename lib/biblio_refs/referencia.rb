@@ -31,12 +31,12 @@ module BiblioRefs
       if autores.kind_of?(Array)
         autores.each do |autor|
           final += autor
-          final += ", "
+          final += " & "
         end
-        final[-2] = "."
+        final[-3...-1] = ""
       else
         final += autores
-        final += ". "
+        final += " "
       end
       final.chop
     end
@@ -83,8 +83,12 @@ module BiblioRefs
       end
     end
 
+    def formato_apa
+      autores_to_s + " (" + fecha_publicacion_to_s + ")" + ". " + titulo_to_s.capitalize + "."
+    end
+
     def to_s
-      final = autores_to_s + "\n" + titulo_to_s + "\n"
+      final = autores_to_s + ".\n" + titulo_to_s + "\n"
       if serie != nil
         final += serie_to_s + "\n"
       end

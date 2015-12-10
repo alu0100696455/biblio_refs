@@ -4,6 +4,6 @@ module BiblioRefs
     def initialize(*nodo)
       super(*nodo)
     end
-    
+
   end
 end

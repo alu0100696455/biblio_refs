@@ -1,18 +1,33 @@
 module BiblioRefs
   class Articulo < Libro
     
-  attr_accessor :titulo_articulo, :editores, :num_paginas
+  attr_accessor :titulo_obra, :editores, :num_paginas
 
-    def initialize(autores, fecha_publicacion, titulo_articulo, editores, titulo, num_paginas, num_edicion, volumen, editorial, isbn)
-      super(autores, fecha_publicacion, titulo, num_edicion, volumen, editorial, isbn)
-      @titulo_articulo = titulo_articulo
+    def initialize(autores, anyo_publicacion, titulo, editores, titulo_obra, num_paginas, num_edicion, volumen, editorial, isbn)
+      super(autores, anyo_publicacion, titulo, nil, num_edicion, volumen, editorial, isbn)
+      @titulo_obra = titulo_obra
       @editores = editores
       @num_paginas = num_paginas
     end
 
-    def to_s
-      super
+    def editores_to_s
+      final = ""
+      if editores.kind_of?(Array)
+        editores.each do |editor|
+          final += editor
+          final += " & "
+        end
+        final[-3...-1] = ""
+      else
+        final += editores
+        final += " "
+      end
+      final.chop
     end
-    
+
+    def to_s
+      formato_apa + " En " + editores_to_s + ", " + titulo_obra.to_s.capitalize + " (" + num_paginas.to_s + ")(" + num_edicion_to_s + ")(" + volumen.to_s + "). Lugar de publicación: " + editorial_to_s.capitalize 
+    end
+
   end
 end

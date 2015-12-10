@@ -40,7 +40,7 @@ module BiblioRefs
       end
     end
 
-      def to_s
+    def to_s
       aux = @head
       string = "Lista: "
       while aux[:next] do

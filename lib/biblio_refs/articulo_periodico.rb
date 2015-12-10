@@ -10,7 +10,7 @@ module BiblioRefs
     end
 
     def to_s
-      super
+      formato_apa + " " + nombre_periodico.capitalize + ", " + num_paginas.to_s + "."  
     end
 
   end
