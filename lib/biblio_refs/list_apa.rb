@@ -18,7 +18,18 @@ module BiblioRefs
     end
 
     def to_s
-      list.to_s
+      class << @list
+        def to_s
+          aux = @head
+          string = "Lista APA: "
+          while aux[:next] do
+            string += "#{aux[:value]}" + "\n\n"
+            aux = aux[:next]
+          end
+          string += "#{aux[:value]}"
+        end
+      end
+      @list.to_s
     end
 
   end
