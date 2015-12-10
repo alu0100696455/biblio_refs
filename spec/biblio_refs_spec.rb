@@ -302,19 +302,17 @@ describe BiblioRefs do
       @refd = BiblioRefs::Referencia.new(["David Flanagan", "Yukihiro Matsumoto"], "The Ruby Programming Language", "O'Reilly Media", 1, Date.parse('4th February 2008'), ['0596516177', '978-0596516178'])
     end
 
-    context "#Se ordenan correctamente los objetos Referencia" do
-      it "#La referencia C debería ir después que la referencia B" do
-        expect(@refc > @refb).to be true
-      end
-      it "#La referencia B debería ir después que la referencia A" do
-        expect(@refb >= @refa).to be true
-      end
-      it "#La referencia D debería ir antes que la referencia C" do
-        expect(@refd < @refc).to be true
-      end
-      it "#La referencia A debería ir antes que la referencia D" do
-        expect(@refa <= @refd).to be true
-      end
+    it "#La referencia C debería ir después que la referencia B" do
+      expect(@refc > @refb).to be true
+    end
+    it "#La referencia B debería ir después que la referencia A" do
+      expect(@refb >= @refa).to be true
+    end
+    it "#La referencia D debería ir antes que la referencia C" do
+      expect(@refd < @refc).to be true
+    end
+    it "#La referencia A debería ir antes que la referencia D" do
+      expect(@refa <= @refd).to be true
     end
   end
 end

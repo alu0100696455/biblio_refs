@@ -17,7 +17,7 @@ module BiblioRefs
     end
 
     def <=> (ref)
-      return nil unless ref.instance_of? Referencia
+      return nil unless ref.is_a? Referencia
       if(@autores.kind_of?(Array) && ref.autores.kind_of?(Array))
         if((@autores[0] <=> ref.autores[0]) == 0)
           if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)

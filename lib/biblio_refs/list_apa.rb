@@ -3,6 +3,7 @@ module BiblioRefs
 
     def initialize(*nodo)
       super(*nodo)
+      #self = self.sort
     end
 
   end
