@@ -19,49 +19,31 @@ module BiblioRefs
     def <=> (ref)
       return nil unless ref.is_a? Referencia
       if(@autores.kind_of?(Array) && ref.autores.kind_of?(Array))
-        if((@autores[0] <=> ref.autores[0]) == 0)
-          if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
-            @titulo <=> ref.titulo
-          else
-            @fecha_publicacion <=> ref.fecha_publicacion
-          end
-        else
-          @autores[0] <=> ref.autores[0]
-        end
+        comparar_autores(@autores[0], ref.autores[0], ref)
       elsif(@autores.kind_of?(Array))
-        if((@autores[0] <=> ref.autores) == 0)
-          if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
-            @titulo <=> ref.titulo
-          else
-            @fecha_publicacion <=> ref.fecha_publicacion
-          end
-        else
-          @autores[0] <=> ref.autores
-        end
+        comparar_autores(@autores[0], ref.autores, ref)
       elsif(ref.autores.kind_of?(Array))
-        if((@autores <=> ref.autores[0]) == 0)
-          if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
-            @titulo <=> ref.titulo
-          else
-            @fecha_publicacion <=> ref.fecha_publicacion
-          end
-        else
-          @autores <=> ref.autores[0]
-        end
-      elsif((@autores <=> ref.autores) == 0)
-        if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
-          @titulo <=> ref.titulo
-        else
-          @fecha_publicacion <=> ref.fecha_publicacion
-        end
+        comparar_autores(@autores, ref.autores[0], ref)
       else
-        @autores <=> ref.autores
+        comparar_autores(@autores, ref.autores, ref)
       end
     end
 
     def == (ref)
       return nil unless ref.instance_of? Referencia
       self.to_s == ref.to_s
+    end
+
+    def comparar_autores(autor1, autor2, ref)
+      if((autor1 <=> autor2) == 0)
+          if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
+            @titulo <=> ref.titulo
+          else
+            @fecha_publicacion <=> ref.fecha_publicacion
+          end
+        else
+          autor1 <=> autor2
+        end
     end
 
     def autores_to_s
