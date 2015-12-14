@@ -318,4 +318,62 @@ describe BiblioRefs do
       expect(@refa <= @refd).to be true
     end
   end
+
+  describe "DSL (Domain Specific Language)" do
+    before :each do
+      @libro = BiblioRefs::Libro.new do
+        author    :surname => "Apellido",
+                  :name => "Nombre"
+        title     "Título del libro"
+        book      :name => "Subtítulo del libro",
+                  :volume => 2,
+                  :year => 2009
+        info      :edition => 1,
+                  :editorial => "Editorial",
+                  :isbn => "655-2325213599"
+      end
+      @articulo = BiblioRefs::Articulo.new do
+        author    :surname => "Apellido",
+                  :name => "Nombre"
+        title     "Título del artículo"
+        article   :book => "Título de la obra",
+                  :editor => "A. Editor",
+                  :pages => 27,
+                  :volume => 4,
+                  :year => 2005
+        info      :edition => 1,
+                  :editorial => "Editorial",
+                  :isbn => "655-2325213599"
+      end
+      @articulo_periodico = BiblioRefs::ArticuloPeriodico.new do
+        author    :surname => "Apellido",
+                  :name => "Nombre"
+        title     "Título de la obra"
+        newspaper :name => "Nombre del periódico",
+                  :pages => 90
+        info      :date => "1st June 2009",
+                  :issn => "2325213599"
+      end
+      @documento_electronico = BiblioRefs::DocumentoElectronico.new do
+        author    :surname => "Apellido",
+                  :name => "Nombre"
+        title     "Título de la obra"
+        document  :media => "Nombre del periódico",
+                  :pages => 90,
+                  :platform => "Vía de disponibilidad",
+                  :access_date => 2010
+        info      :date => 2009,
+                  :edition => 3,
+                  :editorial => "Editorial",
+                  :issn => "634-2325213599"
+      end
+    end
+
+    it "Se han generado los autores correctamente" do
+      expect(@libro.autores_to_s).to eq("Apellido, Nombre")
+      expect(@articulo.autores_to_s).to eq("Apellido, Nombre")
+      expect(@articulo_periodico.autores_to_s).to eq("Apellido, Nombre")
+      expect(@documento_electronico.autores_to_s).to eq("Apellido, Nombre")
+    end
+  end
 end
