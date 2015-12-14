@@ -1,6 +1,7 @@
 # Biblio::Refs
 
 [![Build Status](https://travis-ci.org/alu0100699968/biblio_refs.svg?branch=jonathan)](https://travis-ci.org/alu0100699968/biblio_refs)
+[![Coverage Status](https://coveralls.io/repos/alu0100699968/biblio_refs/badge.svg?branch=jonathan&service=github)](https://coveralls.io/github/alu0100699968/biblio_refs?branch=jonathan)
 
 Gema para la representación de referencias de una Bibliografía. Realizada para la práctica 6 de la asignatura Lenguajes y Paradigmas de la Programación.
 
