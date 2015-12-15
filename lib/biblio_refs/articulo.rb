@@ -8,6 +8,7 @@ module BiblioRefs
       @titulo_obra = titulo_obra
       @editores = editores
       @num_paginas = num_paginas
+      @counter = 0
     end
 
     def article(articulo = {})

@@ -341,7 +341,7 @@ describe BiblioRefs do
                   :name => "Nombre"
         title     "Título del artículo"
         article   :book => "Título de la obra",
-                  :editor => "A. Editor",
+                  :editor => ["A. Editor", "B. Editor"],
                   :pages => 27,
                   :volume => 4,
                   :year => 2005
@@ -385,6 +385,13 @@ describe BiblioRefs do
       expect(@articulo.titulo_to_s).to eq("Título del artículo")
       expect(@articulo_periodico.titulo_to_s).to eq("Título del artículo periódico")
       expect(@documento_electronico.titulo_to_s).to eq("Título del documento")
+    end
+
+    it "Se han generado las referencias correctamente" do
+      expect(@libro.to_s).to eq("Abreu, A. A. & Benítez, B. B. & Cabrera, C. C. (2015). Título del libro: Subtítulo del libro (1 edition)(2). Lugar de publicación: Editorial.")
+      expect(@articulo.to_s).to eq("Apellido, Nombre (2015). Título del artículo. En A. Editor & B. Editor, Título de la obra (27)(1 edition)(4). Lugar de publicación: Editorial")
+      expect(@articulo_periodico.to_s).to eq("Apellido, Nombre (June 1, 2009). Título del artículo periódico. Nombre del periódico, 90.")
+      expect(@documento_electronico.to_s).to eq("Apellido, Nombre (November 23, 2011). Título del documento. (1). [Nombre del periódico]. Lugar de publicación: Editorial. Disponible en: Vía de disponibilidad [November 18, 2011].")
     end
   end
 end
