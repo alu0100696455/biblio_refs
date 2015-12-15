@@ -16,10 +16,5 @@ module BiblioRefs
         final += "ISSN: " + isbn
       end
     end 
-
-    def to_s
-      super 
-    end
-
   end
 end
