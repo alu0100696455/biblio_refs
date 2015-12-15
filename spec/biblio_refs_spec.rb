@@ -348,7 +348,7 @@ describe BiblioRefs do
       @articulo_periodico = BiblioRefs::ArticuloPeriodico.nuevo do
         author    :surname => "Apellido",
                   :name => "Nombre"
-        title     "Título de la obra"
+        title     "Título del artículo periódico"
         newspaper :name => "Nombre del periódico",
                   :pages => 90
         info      :date => "1st June 2009",
@@ -357,7 +357,7 @@ describe BiblioRefs do
       @documento_electronico = BiblioRefs::DocumentoElectronico.nuevo do
         author    :surname => "Apellido",
                   :name => "Nombre"
-        title     "Título de la obra"
+        title     "Título del documento"
         document  :media => "Nombre del periódico",
                   :pages => 90,
                   :platform => "Vía de disponibilidad",
@@ -374,6 +374,13 @@ describe BiblioRefs do
       expect(@articulo.autores_to_s).to eq("Apellido, Nombre")
       expect(@articulo_periodico.autores_to_s).to eq("Apellido, Nombre")
       expect(@documento_electronico.autores_to_s).to eq("Apellido, Nombre")
+    end
+
+    it "Se han generado los titulos correctamente" do
+      expect(@libro.titulo_to_s).to eq("Título del libro")
+      expect(@articulo.titulo_to_s).to eq("Título del artículo")
+      expect(@articulo_periodico.titulo_to_s).to eq("Título del artículo periódico")
+      expect(@documento_electronico.titulo_to_s).to eq("Título del documento")
     end
   end
 end
