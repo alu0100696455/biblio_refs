@@ -63,7 +63,7 @@ module BiblioRefs
     end
 
     def author(autor = {})
-      @autores = "#{autor[:surname]}, #{autor[:name]}"
+      arr_autores << "#{autor[:surname]}, #{autor[:name]}"
     end
 
     def title(titulo = {})

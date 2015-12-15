@@ -322,8 +322,12 @@ describe BiblioRefs do
   describe "DSL (Domain Specific Language)" do
     before :each do
       @libro = BiblioRefs::Libro.nuevo do
-        author    :surname => "Apellido",
-                  :name => "Nombre"
+        author    :surname => "Abreu",
+                  :name => "A. A."
+        author    :surname => "Benítez",
+                  :name => "B. B."
+        author    :surname => "Cabrera",
+                  :name => "C. C."
         title     "Título del libro"
         book      :name => "Subtítulo del libro",
                   :volume => 2,
@@ -370,7 +374,7 @@ describe BiblioRefs do
     end
 
     it "Se han generado los autores correctamente" do
-      expect(@libro.autores_to_s).to eq("Apellido, Nombre")
+      expect(@libro.autores_to_s).to eq("Abreu, A. A. & Benítez, B. B. & Cabrera, C. C.")
       expect(@articulo.autores_to_s).to eq("Apellido, Nombre")
       expect(@articulo_periodico.autores_to_s).to eq("Apellido, Nombre")
       expect(@documento_electronico.autores_to_s).to eq("Apellido, Nombre")
