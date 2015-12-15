@@ -9,6 +9,11 @@ module BiblioRefs
       @num_paginas = num_paginas
     end
 
+    def newspaper(periodico = {})
+      @nombre_periodico = periodico[:name]
+      @num_paginas = periodico[:pages]
+    end
+
     def to_s
       formato_apa + " " + nombre_periodico.capitalize + ", " + num_paginas.to_s + "."  
     end

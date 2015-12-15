@@ -10,6 +10,14 @@ module BiblioRefs
       @num_paginas = num_paginas
     end
 
+    def article(articulo = {})
+      @titulo_obra = articulo[:book]
+      @editores = articulo[:editor]
+      @num_paginas = articulo[:pages]
+      @volumen = articulo[:volume]  
+      @fecha_publicacion = Date.parse('1st January #{articulo[:year]}')
+    end
+
     def editores_to_s
       final = ""
       if editores.kind_of?(Array)

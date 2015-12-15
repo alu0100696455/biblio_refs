@@ -10,6 +10,12 @@ module BiblioRefs
       @fecha_acceso = fecha_acceso
     end
 
+    def document(documento = {})
+      @tipo_medio = documento[:media]
+      @via_disponible = documento[:platform]
+      @fecha_acceso = Date.parse(documento[:access_date])
+    end
+
     def fecha_acceso_to_s
       Date::MONTHNAMES[fecha_acceso.mon] + " " + fecha_acceso.day.to_s + ", " + fecha_acceso.year.to_s
     end

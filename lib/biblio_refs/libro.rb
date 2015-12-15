@@ -9,6 +9,12 @@ module BiblioRefs
       @volumen = volumen
     end
 
+    def book(libro = {})
+      @subtitulo = libro[:name]
+      @volumen = libro[:volume]
+      @fecha_publicacion = Date.parse('1st January #{libro[:year]}')
+    end
+
     def fecha_publicacion_to_s
       fecha_publicacion.year.to_s
     end

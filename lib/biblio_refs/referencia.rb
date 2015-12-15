@@ -16,6 +16,22 @@ module BiblioRefs
       @isbn = isbn
     end
 
+    def self.nuevo(&block)
+      if self == BiblioRefs::Libro
+        ref = self.new(nil, nil, nil, nil, nil, nil, nil, nil)
+      elsif self == BiblioRefs::Articulo
+        ref = self.new(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil)
+      elsif self == BiblioRefs::ArticuloPeriodico
+        ref = self.new(nil, nil, nil, nil, nil, nil)
+      elsif self == BiblioRefs::DocumentoElectronico
+        ref = self.new(nil, nil, nil, nil, nil, nil, nil, nil, nil)
+      else
+        puts "Error"
+      end
+      ref.instance_eval &block
+      ref
+    end
+
     def <=> (ref)
       return nil unless ref.is_a? Referencia
       if(@autores.kind_of?(Array) && ref.autores.kind_of?(Array))
@@ -44,6 +60,24 @@ module BiblioRefs
         else
           autor1 <=> autor2
         end
+    end
+
+    def author(autor = {})
+      @autores = "#{autor[:surname]}, #{autor[:name]}"
+    end
+
+    def title(titulo = {})
+      @titulo = titulo
+    end
+
+    def info(informacion = {})
+      @serie = informacion[:serie]
+      @editorial = informacion[:editorial]
+      @num_edicion = informacion[:edition]
+      if informacion[:date]
+        @fecha_publicacion = Date.parse(informacion[:date])
+      end
+      @isbn = informacion[:isbn]
     end
 
     def autores_to_s

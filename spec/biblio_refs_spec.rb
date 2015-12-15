@@ -321,7 +321,7 @@ describe BiblioRefs do
 
   describe "DSL (Domain Specific Language)" do
     before :each do
-      @libro = BiblioRefs::Libro.new do
+      @libro = BiblioRefs::Libro.nuevo do
         author    :surname => "Apellido",
                   :name => "Nombre"
         title     "Título del libro"
@@ -332,7 +332,7 @@ describe BiblioRefs do
                   :editorial => "Editorial",
                   :isbn => "655-2325213599"
       end
-      @articulo = BiblioRefs::Articulo.new do
+      @articulo = BiblioRefs::Articulo.nuevo do
         author    :surname => "Apellido",
                   :name => "Nombre"
         title     "Título del artículo"
@@ -345,7 +345,7 @@ describe BiblioRefs do
                   :editorial => "Editorial",
                   :isbn => "655-2325213599"
       end
-      @articulo_periodico = BiblioRefs::ArticuloPeriodico.new do
+      @articulo_periodico = BiblioRefs::ArticuloPeriodico.nuevo do
         author    :surname => "Apellido",
                   :name => "Nombre"
         title     "Título de la obra"
@@ -354,16 +354,16 @@ describe BiblioRefs do
         info      :date => "1st June 2009",
                   :issn => "2325213599"
       end
-      @documento_electronico = BiblioRefs::DocumentoElectronico.new do
+      @documento_electronico = BiblioRefs::DocumentoElectronico.nuevo do
         author    :surname => "Apellido",
                   :name => "Nombre"
         title     "Título de la obra"
         document  :media => "Nombre del periódico",
                   :pages => 90,
                   :platform => "Vía de disponibilidad",
-                  :access_date => 2010
-        info      :date => 2009,
-                  :edition => 3,
+                  :access_date => "18th November 2011"
+        info      :date => "23th November 2011",
+                  :edition => 1,
                   :editorial => "Editorial",
                   :issn => "634-2325213599"
       end
