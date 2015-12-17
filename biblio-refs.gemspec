@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'biblio_refs/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "biblio-refs"
+  spec.name          = "biblio-refs-v2"
   spec.version       = BiblioRefs::VERSION
   spec.authors       = ["Jonathan Expósito"]
   spec.email         = ["alu0100696455@ull.edu.es"]
