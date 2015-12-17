@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["alu0100699968@ull.edu.es"]
 
   spec.summary       = %q{Gema para representar un conjunto de referencias.}
-  spec.homepage      = "https://github.com/alu0100699968/biblio_refs/tree/jonathan"
+  spec.homepage      = "https://github.com/alu0100696455/biblio_refs/"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
