@@ -3,6 +3,7 @@ module BiblioRefs
     
   attr_accessor :titulo_obra, :editores, :num_paginas
 
+    #Constructor de la clase Articulo
     def initialize(autores, anyo_publicacion, titulo, editores, titulo_obra, num_paginas, num_edicion, volumen, editorial, isbn)
       super(autores, anyo_publicacion, titulo, nil, num_edicion, volumen, editorial, isbn)
       @titulo_obra = titulo_obra
@@ -11,6 +12,7 @@ module BiblioRefs
       @counter = 0
     end
 
+    #Método que asigna los valores partículares del objeto Articulo creado mediante DSL
     def article(articulo = {})
       @titulo_obra = articulo[:book]
       @editores = articulo[:editor]
@@ -19,6 +21,7 @@ module BiblioRefs
       @fecha_publicacion = Date.parse('1st January #{articulo[:year]}')
     end
 
+    #Método que devuelve una cadena de carácteres formateada de los editores
     def editores_to_s
       final = ""
       if editores.kind_of?(Array)
@@ -34,6 +37,7 @@ module BiblioRefs
       final.chop
     end
 
+    #Método que devuelve una cadena de carácteres formateada de los objetos de la clase Articulo
     def to_s
       formato_apa + " En " + editores_to_s + ", " + titulo_obra.to_s.capitalize + " (" + num_paginas.to_s + ")(" + num_edicion_to_s + ")(" + volumen.to_s + "). Lugar de publicación: " + editorial_to_s.capitalize 
     end

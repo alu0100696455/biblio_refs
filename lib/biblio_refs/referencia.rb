@@ -6,6 +6,7 @@ module BiblioRefs
 
     attr_accessor :autores, :titulo, :serie, :editorial, :num_edicion, :fecha_publicacion, :isbn
 
+    #Constructor de la clase Referencia
     def initialize(autores, titulo, serie = nil, editorial, num_edicion, fecha_publicacion, isbn)
       @autores = autores
       @titulo = titulo
@@ -16,6 +17,8 @@ module BiblioRefs
       @isbn = isbn
     end
 
+    #Método para crear objetos de la clase Referencia o de sus hijas mediante DSL
+    #Recibe un bloque como parámetro
     def self.nuevo(&block)
       if self == BiblioRefs::Libro
         ref = self.new(nil, nil, nil, nil, nil, nil, nil, nil)
@@ -32,6 +35,7 @@ module BiblioRefs
       ref
     end
 
+    #Método para hacer la clase Referencia comparable
     def <=> (ref)
       return nil unless ref.is_a? Referencia
       if(@autores.kind_of?(Array) && ref.autores.kind_of?(Array))
@@ -45,11 +49,14 @@ module BiblioRefs
       end
     end
 
+    #Método que sobreescribe las reglas para identificar si dos referencias son iguales
     def == (ref)
       return nil unless ref.instance_of? Referencia
       self.to_s == ref.to_s
     end
 
+    #Método para comparar dos autores de distinta referencia, si son iguales compara
+    #los títulos de la obra y, si estos coinciden, la fecha de publicación.
     def comparar_autores(autor1, autor2, ref)
       if((autor1 <=> autor2) == 0)
           if((@fecha_publicacion <=> ref.fecha_publicacion) == 0)
@@ -62,6 +69,7 @@ module BiblioRefs
         end
     end
 
+    #Método que define los valores de 'author' asignados mediante DSL del objeto Referencia
     def author(autor = {})
      if @autores == nil
         @autores = "#{autor[:surname]}, #{autor[:name]}"
@@ -74,10 +82,12 @@ module BiblioRefs
       end
     end
 
+    #Método que define los valores de 'title' asignados mediante DSL del objeto Referencia
     def title(titulo = {})
       @titulo = titulo
     end
 
+    #Método que define los valores de 'author' asignados mediante DSL del objeto Referencia
     def info(informacion = {})
       @serie = informacion[:serie]
       @editorial = informacion[:editorial]
@@ -88,6 +98,7 @@ module BiblioRefs
       @isbn = informacion[:isbn]
     end
 
+    #Método que devuelve una cadena de carácteres formateada de los autores
     def autores_to_s
       final = ""
       if autores.kind_of?(Array)
@@ -103,28 +114,34 @@ module BiblioRefs
       final.chop
     end
 
+    #Método que devuelve una cadena de carácteres formateada del título
     def titulo_to_s
       titulo.to_s
     end
 
+    #Método que devuelve una cadena de carácteres formateada de la serie
     def serie_to_s
       if serie != nil
         "(" + serie.to_s + ")"
       end
     end
 
+    #Método que devuelve una cadena de carácteres formateada de la editorial
     def editorial_to_s
       editorial.to_s
     end
 
+    #Método que devuelve una cadena de carácteres formateada del número de edición
     def num_edicion_to_s
       num_edicion.to_s + " edition"
     end
 
+    #Método que devuelve una cadena de carácteres formateada de la fecha de publicación
     def fecha_publicacion_to_s
       Date::MONTHNAMES[fecha_publicacion.mon] + " " + fecha_publicacion.day.to_s + ", " + fecha_publicacion.year.to_s
     end
 
+    #Método que devuelve una cadena de carácteres formateada del ISBN
     def isbn_to_s
       final = ""
       if isbn.kind_of?(Array)
@@ -145,10 +162,12 @@ module BiblioRefs
       end
     end
 
+    #Método que devuelve una cadena de carácteres con formato APA del objeto Referencia
     def formato_apa
       autores_to_s + " (" + fecha_publicacion_to_s + ")" + ". " + titulo_to_s.capitalize + "."
     end
 
+    #Método que devuelve una cadena de carácteres formateada de los objetos de la clase Referencia
     def to_s
       final = autores_to_s + ".\n" + titulo_to_s + "\n"
       if serie != nil
