@@ -6,8 +6,8 @@ require 'biblio_refs/version'
 Gem::Specification.new do |spec|
   spec.name          = "biblio-refs"
   spec.version       = BiblioRefs::VERSION
-  spec.authors       = ["Sergio Rodríguez"]
-  spec.email         = ["alu0100699968@ull.edu.es"]
+  spec.authors       = ["Jonathan Expósito"]
+  spec.email         = ["alu0100696455@ull.edu.es"]
 
   spec.summary       = %q{Gema para representar un conjunto de referencias.}
   spec.homepage      = "https://github.com/alu0100696455/biblio_refs/"
